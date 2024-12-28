@@ -1,14 +1,17 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "./Header/Header"
+import Footer from "./Footer/Footer";
 
 function PageLayout() {
   return (
     <div>
       <main>
-        {/* Header */}
+        <Header />
+        <hr/>
         <Outlet />
       </main>
-      {/* Footer */}
+      <Footer />
     </div>
   );
 }
