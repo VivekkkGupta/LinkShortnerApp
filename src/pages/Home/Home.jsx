@@ -1,54 +1,29 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar"
 
 function Home() {
-  return (
-    <SidebarProvider>
+  const navigate = useNavigate()
 
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
-        </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+  const [longUrl, setLongUrl] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate(`/auth?createNew=${longUrl}`)
+  }
+  return (
+    <div className="flex flex-col h-full w-full p-10">
+      <div className="text-3xl md:text-5xl text-center font-extrabold pb-10">
+        <h2>Free Best URL Shortner 🔗</h2>
+      </div>
+      <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col md:flex-row gap-4 items-center w-full md:w-[30%] mx-auto">
+        <Input onChange={(e) => setLongUrl(e.target.value)} className="w-full h-full md:py-3 md:px-6 lg:py-4 py-2 px-4 text-md md:text-xl" type="url" placeHolder="Enter Long URL" value={longUrl} />
+        <Button className="w-full h-full md:w-fit mmd:py-3 md:px-6 lg:py-4 py-2 px-4 text-md md:text-xl" type="submit">Shorten</Button>
+      </form>
+    </div>
+  );
 }
 
-export default Home
+export default Home;
