@@ -3,7 +3,7 @@ import { Github, Twitter, Linkedin } from "lucide-react"; // Import icons
 function Footer() {
   return (
     <div className="w-full bg-gray-900 text-white py-4 flex flex-col sm:flex-row items-center justify-between px-10">
-      <div className="flex gap-4 mb-2">
+      <div className="flex gap-4 mb-2 sm:mb-0">
         <a href="https://github.com" target="_blank" rel="noopener noreferrer">
           <Github className="text-white hover:text-gray-400" />
         </a>
