@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,10 +46,12 @@ function Header() {
                 <DropdownMenuLabel>{user?.user_metadata.name}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <div className="flex items-center cursor-pointer">
-                    <LinkIcon className="h-4 w-4 mr-2" />
-                    My Links
-                  </div>
+                  <Link to="/dashboard">
+                    <div className="flex items-center cursor-pointer">
+                      <LinkIcon className="h-4 w-4 mr-2" />
+                      My Links
+                    </div>
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => {
                   fnLogout().then(() => {
@@ -66,8 +68,9 @@ function Header() {
             </DropdownMenu>
           )}
         </div>
-      </div>
-      {loading && <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />}
+      </div >
+      {loading && <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />
+      }
     </>
   );
 }
