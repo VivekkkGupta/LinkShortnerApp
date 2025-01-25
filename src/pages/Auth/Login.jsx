@@ -46,7 +46,6 @@ const Login = () => {
     //Our Custom Hook
     const { error, loading, fn: fnLogin, data } = useFetch(login, formData);
 
-
     const { fetchUser } = UrlState();
 
     useEffect(() => {

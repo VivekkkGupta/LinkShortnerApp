@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UrlState } from "../../context/context";
 
 function Home() {
   const navigate = useNavigate();
   const [longUrl, setLongUrl] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
