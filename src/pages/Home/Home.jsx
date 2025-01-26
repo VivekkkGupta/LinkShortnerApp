@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UrlState } from "../../context/context";
+import { UrlState } from "@/context/context";
 
 function Home() {
   const navigate = useNavigate();
