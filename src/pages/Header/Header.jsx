@@ -27,7 +27,7 @@ function Header() {
     <>
 
       <div className='h-16 w-full flex items-center justify-between py-4 px-6 bg-gray-800 text-white'>
-        <h1 onClick={() => navigate('/')} className='text-2xl font-semibold cursor-pointer'>Shortyourl</h1>
+        <h1 onClick={() => navigate('/')} className='text-2xl font-extrabold cursor-pointer flex items-center gap-2'>Shortyourl <LinkIcon /></h1>
         <div className='flex gap-4 items-center'>
           {!user ? (
             <Button onClick={() => navigate('/auth')} variant="outline" className="text-white border-white hover:bg-white hover:text-gray-800">Login</Button>

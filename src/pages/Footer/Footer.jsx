@@ -4,13 +4,13 @@ function Footer() {
   return (
     <div className="w-full bg-gray-900 text-white py-4 flex flex-col sm:flex-row items-center justify-between px-10">
       <div className="flex gap-4 mb-2 sm:mb-0">
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/VivekkkGupta" target="_blank" rel="noopener noreferrer">
           <Github className="text-white hover:text-gray-400" />
         </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/vivekkkgupta" target="_blank" rel="noopener noreferrer">
           <Twitter className="text-white hover:text-gray-400" />
         </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/vivekguptaaa/" target="_blank" rel="noopener noreferrer">
           <Linkedin className="text-white hover:text-gray-400" />
         </a>
       </div>
