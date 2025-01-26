@@ -18,18 +18,15 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { UrlState } from "../../context/context";
 
 const Login = () => {
-
     const navigate = useNavigate();
     const [searcParams] = useSearchParams();
-    const longLink = searcParams.get("createNew")
+    const longLink = searcParams.get("createNew");
 
-    // Input UseState
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
 
-    //Input Handler
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -38,29 +35,24 @@ const Login = () => {
         });
     };
 
-
-    //Errors UseState
     const [errors, setErrors] = useState({});
     const [generalError, setGeneralError] = useState("");
 
-    //Our Custom Hook
     const { error, loading, fn: fnLogin, data } = useFetch(login, formData);
 
     const { fetchUser } = UrlState();
 
     useEffect(() => {
         if (error === null && data) {
-            // console.log("Login successful:", data); // Add logging
-            navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`)
+            navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
             fetchUser();
         }
         if (error) {
-            console.error("Login error:", error); // Add logging
-            setGeneralError(error.message); // Set general error
+            console.error("Login error:", error);
+            setGeneralError(error.message || String(error));
         }
     }, [data, error]);
 
-    //Handle Login Button
     const handleLogin = async () => {
         setErrors({});
         setGeneralError("");
@@ -78,24 +70,15 @@ const Login = () => {
 
             await schema.validate(formData, { abortEarly: false });
 
-            // Log form data before API call
-            // console.log("Form data:", formData);
-
-            //api call
             await fnLogin();
-
         } catch (e) {
-
             const newErrors = {};
-
             e?.inner?.forEach((err) => {
                 newErrors[err.path] = err.message;
             });
-
             setErrors(newErrors);
         }
     };
-
 
     return (
         <Card>

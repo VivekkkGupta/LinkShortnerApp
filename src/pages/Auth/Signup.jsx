@@ -52,7 +52,7 @@ function Signup() {
         }
         if (error) {
             console.error("Signup error:", error);
-            setGeneralError(error.message);
+            setGeneralError(error.message || String(error));
         }
     }, [data, error]);
 

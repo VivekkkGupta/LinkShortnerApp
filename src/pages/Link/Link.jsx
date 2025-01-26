@@ -1,8 +1,10 @@
 import React from 'react'
 
+
 function Link() {
+    const { user } = UrlState()
     return (
-        <div>Link</div>
+        <div></div>
     )
 }
 

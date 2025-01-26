@@ -6,7 +6,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+
 import { Input } from "@/components/ui/input"
 import { Filter } from 'lucide-react'
 import Error from '@/components/error'
@@ -15,6 +15,7 @@ import { UrlState } from '@/context/context'
 import { getClicksForUrls } from '@/db/apiClicks'
 import { getUrls } from '@/db/apiUrls'
 import LinkCard from '@/components/link-card'
+import CreateLink from '../../components/create-link'
 
 
 function Dashboard() {
@@ -58,13 +59,13 @@ function Dashboard() {
                         <CardTitle>Total Clicks</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p>{clicks?.length}</p>
+                        <p>{clicks?.length || 0}</p>
                     </CardContent>
                 </Card>
             </div>
             <div className='flex justify-between'>
                 <h1 className='text-4xl font-extrabold'>My Links</h1>
-                <Button>Create Link</Button>
+                <CreateLink />
             </div>
             <div className='relative'>
                 <Input type="text" placeholder="Filter Links..."
@@ -72,7 +73,7 @@ function Dashboard() {
                     onChange={(e) => setSearchQuery(e.target.value)} />
                 <Filter className='absolute top-2 right-2 p-1' />
             </div>
-            {loadingError && < Error message={loadingError?.message} />}
+            {loadingError && <Error message={loadingError.message || String(loadingError)} />}
             {(filteredUrls || []).map((url, id) => {
                 return <LinkCard key={id} url={url} fetchUrls={fnUrls} />
             })}
