@@ -14,7 +14,7 @@ import { UrlState } from "../../context/context";
 import useFetch from "../../hooks/use-fetch";
 import { logout } from "../../db/apiAuth";
 import { BarLoader } from "react-spinners";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const navigate = useNavigate();
@@ -23,17 +23,19 @@ function Header() {
 
   const { user, fetchUser } = UrlState()
 
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
 
       <div className='h-16 w-full flex items-center justify-between py-4 px-6 bg-gray-800 text-white'>
-        <h1 onClick={() => navigate('/')} className='text-2xl font-extrabold cursor-pointer flex items-center gap-2'>Shortyourl <LinkIcon /></h1>
+        <h1 onClick={() => navigate('/')} className='text-2xl font-extrabold cursor-pointer flex items-center gap-2 tracking-wide'>Shortyourl <LinkIcon /></h1>
         <div className='flex gap-4 items-center'>
           {!user ? (
             <Button onClick={() => navigate('/auth')} variant="outline" className="text-white border-white hover:bg-white hover:text-gray-800">Login</Button>
 
           ) : (
-            <DropdownMenu>
+            <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
               <DropdownMenuTrigger asChild>
                 <button className="rounded-full w-10 overflow-hidden">
                   <Avatar className="border-2 border-transparent hover:border-2 hover:border-sky-400">
@@ -46,7 +48,7 @@ function Header() {
                 <DropdownMenuLabel>{user?.user_metadata.name}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link to="/dashboard">
+                  <Link to="/dashboard" onClick={() => setIsOpen(false)}>
                     <div className="flex items-center cursor-pointer">
                       <LinkIcon className="h-4 w-4 mr-2" />
                       My Links

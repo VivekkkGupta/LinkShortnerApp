@@ -18,7 +18,9 @@ function Footer() {
         &copy; {new Date().getFullYear()} Shortyourl
       </div>
       <div className="text-center">
-        Made with ❤️ by Vivek
+        <a href="https://developervivek.com" target="_blank" className="text-white hover:text-gray-400">
+          Made with ❤️ by Vivek
+        </a>
       </div>
     </div>
   );
