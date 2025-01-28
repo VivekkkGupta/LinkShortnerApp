@@ -51,7 +51,7 @@ function Dashboard() {
                         <CardTitle>Links Created</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p>{urls?.length}</p>
+                        <p className='text-2xl font-bold'>{urls?.length || 0}</p>
                     </CardContent>
                 </Card>
                 <Card>
@@ -59,7 +59,7 @@ function Dashboard() {
                         <CardTitle>Total Clicks</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p>{clicks?.length || 0}</p>
+                        <p className='text-2xl font-bold'>{clicks?.length || 0}</p>
                     </CardContent>
                 </Card>
             </div>

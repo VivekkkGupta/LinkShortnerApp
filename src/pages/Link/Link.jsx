@@ -81,11 +81,11 @@ function Link() {
             {(loading || loadingStats) && (
                 <BarLoader className='mb-4' width={"100%"} color='#36d7b7 ' />
             )}
-            <div className='flex flex-col gap-8 sm:flex-row justify-between'>
+            <div className='flex flex-col gap-8 sm:flex-row justify-between p-5 md:p-10 w-full'>
                 <div className='flex flex-col items-start gap-8 rounded-lg sm:w-2/5'>
-                    <span className='text-6xl font-extrabold hover:underline cursor-pointer'>{url?.title}</span>
+                    <span className='text-4xl md:text-6xl font-extrabold hover:underline cursor-pointer'>{url?.title}</span>
                     <a href={`${SITE_URL}${link}`} target='_blank'
-                        className='text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer'>
+                        className='text-xl sm:text-2xl text-blue-400 font-bold hover:underline cursor-pointer'>
                         {SITE_URL}{link}
                     </a>
                     <a href={url?.original_url} target='_blank'
@@ -117,7 +117,7 @@ function Link() {
                             {loadingDelete ? <BeatLoader size={5} color="white" /> : <Trash />}
                         </Button>
                     </div>
-                    <img src={url?.qr} alt={`qr-${url?.title}`} className='w-full self-center sm:self-start ring ring-blue-500 p-1 object-contain' />
+                    <img src={url?.qr} alt={`qr-${url?.title}`} className='w-1/2 self-center sm:self-start ring ring-blue-500 p-1 object-contain' />
                 </div>
                 <div className='sm:w-3/5'>
                     <Card>

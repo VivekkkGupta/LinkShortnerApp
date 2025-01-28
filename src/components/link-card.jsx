@@ -46,7 +46,7 @@ const LinkCard = ({ url = [], fetchUrls }) => {
     const { loading: loadingDelete, fn: fnDelete } = useFetch(deleteUrl, url.id);
 
     return (
-        <div className="flex flex-col md:flex-row gap-5 border p-4 bg-gray-900 rounded-lg">
+        <div className="flex flex-col md:flex-row gap-5 border p-4 bg-gray-900 rounded-lg overflow-x-scroll md:overflow-clip">
             <img
                 src={url?.qr}
                 className="h-32 object-contain ring ring-blue-500 self-start"
@@ -75,7 +75,7 @@ const LinkCard = ({ url = [], fetchUrls }) => {
                 >
                     <Copy />
 
-                    {copied && <span className="absolute -bottom-6">Copied!</span>}
+                    {copied && <span className="absolute -top-6">Copied!</span>}
                 </Button>
                 <Button variant="ghost" onClick={downloadImage}>
                     <Download />
